@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 07-may-2020 12:14:06 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="jardineria" dynamic-insert="false" dynamic-update="false" mutable="true" name="psp.jardineria.modelo.Empleados" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="empleados">
+        <id name="codigoEmpleado" type="int">
+            <column name="CodigoEmpleado"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="psp.jardineria.modelo.Empleados" embed-xml="true" fetch="select" insert="true" name="empleados" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="CodigoJefe"/>
+        </many-to-one>
+        <many-to-one class="psp.jardineria.modelo.Oficinas" embed-xml="true" fetch="select" insert="true" name="oficinas" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column length="10" name="CodigoOficina" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="Nombre" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="apellido1" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="Apellido1" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="apellido2" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="Apellido2"/>
+        </property>
+        <property generated="never" lazy="false" name="extension" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="Extension" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="Email" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="puesto" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="Puesto"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="empleadoses" optimistic-lock="true" sort="unsorted" table="empleados">
+            <key on-delete="noaction">
+                <column name="CodigoJefe"/>
+            </key>
+            <one-to-many class="psp.jardineria.modelo.Empleados" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="clienteses" optimistic-lock="true" sort="unsorted" table="clientes">
+            <key on-delete="noaction">
+                <column name="CodigoEmpleadoRepVentas"/>
+            </key>
+            <one-to-many class="psp.jardineria.modelo.Clientes" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

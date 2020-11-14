@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 07-may-2020 12:14:06 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="jardineria" dynamic-insert="false" dynamic-update="false" mutable="true" name="psp.jardineria.modelo.Clientes" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="clientes">
+        <id name="codigoCliente" type="int">
+            <column name="CodigoCliente"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="psp.jardineria.modelo.Empleados" embed-xml="true" fetch="select" insert="true" name="empleados" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="CodigoEmpleadoRepVentas"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="nombreCliente" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="NombreCliente" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="nombreContacto" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="NombreContacto"/>
+        </property>
+        <property generated="never" lazy="false" name="apellidoContacto" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="ApellidoContacto"/>
+        </property>
+        <property generated="never" lazy="false" name="telefono" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="Telefono" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="fax" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="Fax" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="lineaDireccion1" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="LineaDireccion1" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="lineaDireccion2" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="LineaDireccion2"/>
+        </property>
+        <property generated="never" lazy="false" name="ciudad" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="Ciudad" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="region" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="Region"/>
+        </property>
+        <property generated="never" lazy="false" name="pais" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="Pais"/>
+        </property>
+        <property generated="never" lazy="false" name="codigoPostal" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="CodigoPostal"/>
+        </property>
+        <property generated="never" lazy="false" name="limiteCredito" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="LimiteCredito" precision="15"/>
+        </property>
+    </class>
+</hibernate-mapping>
